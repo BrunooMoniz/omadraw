@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.brunoomoniz.desenhar",
+  "name": "Desenhar na tela",
+  "version": "0.3.0",
+  "author": "Bruno Moniz",
+  "license": "MIT",
+  "description": "Freeze your screen and annotate with vivid ink, arrows and shapes in a native Omarchy sidebar.",
+  "kinds": ["overlay"],
+  "keepLoaded": true,
+  "entryPoints": {"overlay": "Desenhar.qml"}
+}
