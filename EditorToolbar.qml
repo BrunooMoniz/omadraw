@@ -27,13 +27,13 @@ Rectangle {
             spacing: 12
             RowLayout {
                 Layout.fillWidth: true
-                Label { text: "Desenhar"; color: editor.theme.foreground; font.pixelSize: 20 * editor.theme.fontScale; font.weight: Font.DemiBold; Layout.fillWidth: true }
-                ThemedButton { text: "⇆"; implicitWidth: 30; implicitHeight: 30; hint: "Mover a barra para o outro lado"; onClicked: editor.toolbarLeft = !editor.toolbarLeft }
+                Label { text: "OmaDraw"; color: editor.theme.foreground; font.pixelSize: 20 * editor.theme.fontScale; font.weight: Font.DemiBold; Layout.fillWidth: true }
+                ThemedButton { text: "⇆"; implicitWidth: 30; implicitHeight: 30; hint: "Move sidebar to the other side"; onClicked: editor.toolbarLeft = !editor.toolbarLeft }
             }
             RowLayout {
                 spacing: 6
                 Rectangle { width: 5; height: 5; radius: 3; color: editor.theme.accent }
-                Label { text: "TELA CONGELADA"; color: editor.theme.muted; font.pixelSize: 9 * editor.theme.fontScale; font.letterSpacing: 1.1 }
+                Label { text: "SCREEN FROZEN"; color: editor.theme.muted; font.pixelSize: 9 * editor.theme.fontScale; font.letterSpacing: 1.1 }
             }
             Rectangle { Layout.fillWidth: true; height: 1; color: editor.theme.separator; Layout.topMargin: 2; Layout.bottomMargin: 2 }
             GridLayout {
@@ -41,20 +41,20 @@ Rectangle {
                 columnSpacing: 8; rowSpacing: 8
                 Layout.fillWidth: true
                 Repeater {
-                    model: [ {tool: "pen", label: "╱  Caneta", key: "P"}, {tool: "arrow", label: "↗  Seta", key: "A"}, {tool: "rectangle", label: "□  Retângulo", key: "R"}, {tool: "ellipse", label: "○  Círculo", key: "O"} ]
+                    model: [ {tool: "pen", label: "╱  Pen", key: "P"}, {tool: "arrow", label: "↗  Arrow", key: "A"}, {tool: "rectangle", label: "□  Rectangle", key: "R"}, {tool: "ellipse", label: "○  Ellipse", key: "O"} ]
                     ThemedButton {
                         required property var modelData
                         objectName: modelData.tool
                         Layout.fillWidth: true
                         Layout.preferredWidth: 80
                         text: modelData.label
-                        hint: modelData.key + " · Shift para quadrado/círculo perfeito"
+                        hint: modelData.key + " · Shift for a square or circle"
                         selected: editor.tool === modelData.tool
                         onClicked: editor.tool = modelData.tool
                     }
                 }
             }
-            Label { text: "COR"; color: editor.theme.muted; font.pixelSize: 10 * editor.theme.fontScale; font.letterSpacing: 1; Layout.topMargin: 3 }
+            Label { text: "COLOR"; color: editor.theme.muted; font.pixelSize: 10 * editor.theme.fontScale; font.letterSpacing: 1; Layout.topMargin: 3 }
             GridLayout {
                 columns: 5; columnSpacing: 10; rowSpacing: 10
                 Layout.alignment: Qt.AlignHCenter
@@ -75,7 +75,7 @@ Rectangle {
             }
             RowLayout {
                 Layout.fillWidth: true; Layout.topMargin: 3
-                Label { text: "TRAÇO"; color: editor.theme.muted; font.pixelSize: 10 * editor.theme.fontScale; font.letterSpacing: 1; Layout.fillWidth: true }
+                Label { text: "STROKE"; color: editor.theme.muted; font.pixelSize: 10 * editor.theme.fontScale; font.letterSpacing: 1; Layout.fillWidth: true }
                 Label { text: editor.inkSize + " px"; color: editor.theme.foreground; font.pixelSize: 11 * editor.theme.fontScale }
             }
             RowLayout {
@@ -95,13 +95,13 @@ Rectangle {
             Rectangle { Layout.fillWidth: true; height: 1; color: editor.theme.separator; Layout.topMargin: 2; Layout.bottomMargin: 2 }
             RowLayout {
                 Layout.fillWidth: true; spacing: 8
-                ThemedButton { objectName: "undo"; text: "↶  Desfazer"; Layout.fillWidth: true; enabled: editor.history.length > 0 && !editor.saving; hint: "Ctrl + Z"; onClicked: editor.undo() }
+                ThemedButton { objectName: "undo"; text: "↶  Undo"; Layout.fillWidth: true; enabled: editor.history.length > 0 && !editor.saving; hint: "Ctrl + Z"; onClicked: editor.undo() }
                 ThemedButton { objectName: "redo"; text: "↷"; implicitWidth: 42; enabled: editor.future.length > 0 && !editor.saving; hint: "Ctrl + Shift + Z"; onClicked: editor.redo() }
             }
-            ThemedButton { objectName: "clear"; text: "Limpar desenhos"; Layout.fillWidth: true; enabled: editor.shapes.length > 0 && !editor.saving; hint: "Delete · mantém a tela congelada"; onClicked: editor.clear() }
-            ThemedButton { objectName: "save"; text: editor.saving ? "Salvando…" : "Salvar imagem"; primary: true; Layout.fillWidth: true; enabled: editor.imageReady && !editor.saving; hint: "Ctrl + S · salva sem a barra"; onClicked: editor.save() }
-            ThemedButton { objectName: "close"; text: "Fechar   Esc"; Layout.fillWidth: true; onClicked: editor.closeRequested() }
-            Label { text: "Tab oculta a barra"; color: editor.theme.muted; font.pixelSize: 10 * editor.theme.fontScale; Layout.alignment: Qt.AlignHCenter }
+            ThemedButton { objectName: "clear"; text: "Clear drawings"; Layout.fillWidth: true; enabled: editor.shapes.length > 0 && !editor.saving; hint: "Delete · keep the frozen screen"; onClicked: editor.clear() }
+            ThemedButton { objectName: "save"; text: editor.saving ? "Saving…" : "Save image"; primary: true; Layout.fillWidth: true; enabled: editor.imageReady && !editor.saving; hint: "Ctrl + S · save without controls"; onClicked: editor.save() }
+            ThemedButton { objectName: "close"; text: "Close   Esc"; Layout.fillWidth: true; onClicked: editor.closeRequested() }
+            Label { text: "Tab hides the sidebar"; color: editor.theme.muted; font.pixelSize: 10 * editor.theme.fontScale; Layout.alignment: Qt.AlignHCenter }
         }
     }
 }

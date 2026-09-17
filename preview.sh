@@ -8,5 +8,5 @@ for source_file in *.qml *.js capture.py; do
 done
 ln -s "${OMARCHY_PATH:-/usr/share/omarchy}/shell/Commons" "$preview_dir/Commons"
 cp preview.qml "$preview_dir/shell.qml"
-printf 'Prévia isolada: %s\n' "$preview_dir"
+printf 'Isolated preview: %s\n' "$preview_dir"
 qs -p "$preview_dir" --no-color

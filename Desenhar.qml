@@ -62,7 +62,7 @@ Item {
     function toggle() { if (requested) dismiss(); else open("{}") }
     function state() { return JSON.stringify({opened: opened, requested: requested, ready: editor.imageReady, shapes: editor.shapes.length, saving: saving.running, status: editor.statusText, toolbar: toolbarPanel.visible, palette: currentTheme.dark ? "dark" : "light", theme: {background: String(currentTheme.background), foreground: String(currentTheme.foreground), accent: String(currentTheme.accent), font: currentTheme.fontFamily, radius: currentTheme.radius}}) }
     function error(message) {
-        Quickshell.execDetached(["omarchy-notification-send", "Desenhar na tela", message])
+        Quickshell.execDetached(["omarchy-notification-send", "OmaDraw", message])
     }
 
     Process {
@@ -71,7 +71,7 @@ Item {
         stdout: StdioCollector {
             onStreamFinished: {
                 var result
-                try { result = JSON.parse(text) } catch (e) { result = {error: "Não foi possível capturar a tela."} }
+                try { result = JSON.parse(text) } catch (e) { result = {error: "Could not capture the screen."} }
                 if (result.error) { root.dismiss(); root.error(result.error); return }
                 if (!root.requested) { Quickshell.execDetached(["python", root.helper, "cleanup", result.path]); return }
                 root.targetScreen = Quickshell.screens.find(s => s.name === result.monitor) || Quickshell.screens[0]
@@ -89,8 +89,8 @@ Item {
         stdout: StdioCollector {
             onStreamFinished: {
                 var result
-                try { result = JSON.parse(text) } catch (e) { result = {error: "Não foi possível salvar. Seu desenho foi mantido."} }
-                editor.statusText = result.error ? "Falha ao salvar: " + result.error : "Salvo em " + result.path
+                try { result = JSON.parse(text) } catch (e) { result = {error: "Could not save. Your drawing has been preserved."} }
+                editor.statusText = result.error ? "Save failed: " + result.error : "Saved to " + result.path
                 if (!root.opened) root.error(editor.statusText)
             }
         }

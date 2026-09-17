@@ -91,7 +91,7 @@ def draw_shape(ctx, shape):
         ctx.fill()
         return
     else:
-        raise ValueError("Ferramenta desconhecida")
+        raise ValueError("Unknown drawing tool")
     ctx.stroke()
 
 
@@ -114,12 +114,12 @@ def pictures_dir():
 
 def save(payload, directory=None):
     surface = render(payload)
-    directory = Path(directory) if directory else pictures_dir() / "Anotacoes"
+    directory = Path(directory) if directory else pictures_dir() / "Annotations"
     directory.mkdir(parents=True, exist_ok=True)
-    name = "anotacao-" + datetime.now().strftime("%Y-%m-%d_%H-%M-%S-%f") + ".png"
+    name = "annotation-" + datetime.now().strftime("%Y-%m-%d_%H-%M-%S-%f") + ".png"
     destination = directory / name
     # Publish only the completed image, with private permissions.
-    fd, temporary = tempfile.mkstemp(prefix=".anotacao-", dir=directory)
+    fd, temporary = tempfile.mkstemp(prefix=".annotation-", dir=directory)
     try:
         with os.fdopen(fd, "wb") as stream:
             surface.write_to_png(stream)
@@ -141,7 +141,7 @@ def main():
             cleanup(sys.argv[2])
             result = {}
         else:
-            raise ValueError("Ação desconhecida")
+            raise ValueError("Unknown action")
         print(json.dumps(result))
     except Exception as error:
         print(json.dumps({"error": str(error)}))

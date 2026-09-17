@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "io.github.brunoomoniz.desenhar",
-  "name": "Desenhar na tela",
+  "name": "OmaDraw",
   "version": "0.3.0",
   "author": "Bruno Moniz",
   "license": "MIT",

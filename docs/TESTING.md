@@ -10,4 +10,4 @@ Release preparation checks:
 
 `./tests/run.sh` runs the durable automated coverage. `omarchy plugin validate .` validates the installed Omarchy manifest contract. A standalone real desktop session is needed for native compositor checks; the offscreen Qt tests do not prove compositor effects.
 
-Physical multi-monitor and rotated-output layouts have not been verified. The UI is currently in Brazilian Portuguese.
+Physical multi-monitor and rotated-output layouts have not been verified. The UI and documentation are in English.

@@ -1,10 +1,10 @@
-# Desenhar
+# OmaDraw
 
 Freeze your screen. Draw the point. Keep your flow.
 
-Desenhar is an **Omarchy Quattro screen annotation plugin** with a native sidebar, vivid drawing colors and optional integration with the system's Liquid Glass material. The interface is in Brazilian Portuguese.
+OmaDraw is an **Omarchy Quattro screen annotation plugin** with a native sidebar, vivid drawing colors and optional integration with the system's Liquid Glass material. The interface and documentation are in English.
 
-![Desenhar with arrows, shapes and a native sidebar over a fictional workspace](preview.png)
+![OmaDraw with arrows, shapes and a native sidebar over a fictional workspace](preview.png)
 
 All demonstration images use an original fictional workspace. They contain no personal desktop content, account information, messages or real project data.
 
@@ -20,14 +20,14 @@ All demonstration images use an original fictional workspace. They contain no pe
 - Save a PNG at the original monitor resolution, without controls, and continue drawing.
 - Hide the sidebar with **Tab**, or move it to the opposite side.
 
-Drawing style is inspired by [Tensaku](https://github.com/jondkinney/tensaku). Desenhar has its own QML/Cairo implementation and does not require Tensaku.
+Drawing style is inspired by [Tensaku](https://github.com/jondkinney/tensaku). OmaDraw has its own QML/Cairo implementation and does not require Tensaku.
 
 ## Install
 
 Requires **Omarchy Quattro with the Quickshell shell and Lua Hyprland configuration**. It is not compatible with the older Waybar-based Omarchy shell.
 
 ```bash
-omarchy plugin add https://github.com/BrunooMoniz/omarchy-desenhar --enable
+omarchy plugin add https://github.com/BrunooMoniz/omadraw --enable
 ```
 
 Then configure the shortcut and compositor integration:
@@ -61,7 +61,7 @@ Liquid Glass is **optional** and is not installed or enabled by this plugin. Int
 | Clear drawings | Delete |
 | Hide / show sidebar | Tab |
 
-Images are saved in the system's Pictures directory under `Anotacoes/`. If `OMARCHY_SCREENSHOT_DIR` is set, that directory is used instead of Pictures, still with the `Anotacoes/` subdirectory.
+Images are saved in the system's Pictures directory under `Annotations/`. If `OMARCHY_SCREENSHOT_DIR` is set, that directory is used instead of Pictures, still with the `Annotations/` subdirectory.
 
 ## Privacy and limits
 
